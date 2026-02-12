@@ -1,4 +1,4 @@
-{
+﻿{
   "name": "final-test-dumbways-stage-1",
   "version": "1.0.0",
   "description": "final test dumbways stage 65 batch 1",
@@ -15,7 +15,9 @@
   "type": "module",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"No tests configured\""
   },
   "dependencies": {
     "express": "^5.2.1",
