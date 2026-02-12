@@ -1,9 +1,11 @@
 import express from "express";
 import hbs from "hbs";
 import path from "path";
+import { fileURLToPath } from "url";
 
 const app = express();
-const __dirname = import.meta.dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "views"));
@@ -24,7 +26,11 @@ app.get("/", (req, res) => {
   });
 });
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
-});
+if (process.env.VERCEL !== "1") {
+  const port = process.env.PORT || 3000;
+  app.listen(port, () => {
+    console.log(`Server running on http://localhost:${port}`);
+  });
+}
+
+export default app;
