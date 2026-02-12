@@ -1,0 +1,24 @@
+{
+  "name": "final-test-dumbways-stage-1",
+  "version": "1.0.0",
+  "description": "final test dumbways stage 65 batch 1",
+  "homepage": "https://github.com/udenbaguse/final-test-dumbways-stage-1#readme",
+  "bugs": {
+    "url": "https://github.com/udenbaguse/final-test-dumbways-stage-1/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/udenbaguse/final-test-dumbways-stage-1.git"
+  },
+  "license": "ISC",
+  "author": "Muhamad Syamsudin A.K.A Syam",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "hbs": "^4.2.0"
+  }
+}
