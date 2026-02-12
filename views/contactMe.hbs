@@ -1,0 +1,38 @@
+<section id="contact-me" class="py-5 border-top border-secondary-subtle">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8">
+        <h2 class="fw-bold mb-3">Contact Me</h2>
+        <p class="text-secondary mb-4">
+          Interested in collaboration, a discussion project, or just saying hello? Send us a message using this form.
+        </p>
+
+        <div
+          id="contactAlert"
+          class="alert d-none"
+          role="alert"
+          aria-live="polite"
+        ></div>
+
+        <form id="contactForm" class="p-4 rounded-4 border border-secondary-subtle bg-body" action="#" method="post" novalidate>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan nama kamu" />
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="nama@email.com" />
+          </div>
+
+          <div class="mb-3">
+            <label for="message" class="form-label">message</label>
+            <textarea class="form-control" id="message" name="message" rows="5" placeholder="Tulis pesan kamu di sini"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-secondary px-4">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
