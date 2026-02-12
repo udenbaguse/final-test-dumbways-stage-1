@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap');
+
+
 
 body {
     transition: background-color .2s ease, color .2s ease;
@@ -37,11 +39,54 @@ body {
     width: min(100%, 300px);
     aspect-ratio: 1 / 1;
     object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
-.brand-cursive {
+.hero-profile-image:hover {
+    transform: scale(1.06);
+}
+
+.font-brand {
     font-family: "Dancing Script", cursive;
     font-optical-sizing: auto;
     font-weight: 700;
     font-style: normal;
+}
+
+.font-name {
+    font-family: "Libre Baskerville", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.tech-stack-section {
+    scroll-margin-top: 90px;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.03) 0%, rgba(15, 23, 42, 0) 100%);
+}
+
+.tech-carousel-track {
+    width: min(100%, 1100px);
+}
+
+.tech-carousel-group {
+    animation: tech-slide 16s linear infinite;
+}
+
+.tech-carousel-track:hover .tech-carousel-group {
+    animation-play-state: paused;
+}
+
+.tech-icon-card {
+    width: 5rem;
+}
+
+@keyframes tech-slide {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
 }
