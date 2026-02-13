@@ -145,3 +145,51 @@
     if (videoNode) observer.observe(videoNode);
   });
 })();
+
+(function () {
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+  if (prefersReducedMotion) return;
+  if (window.matchMedia("(max-width: 767.98px)").matches) return;
+
+  const sections = Array.from(
+    document.querySelectorAll(
+      "#tech-stack, #work-experiences, #my-projects, #contact-me"
+    )
+  );
+  if (!sections.length) return;
+
+  const MAX_SHIFT_Y = 18;
+  const MAX_SHIFT_X = 10;
+
+  const updateParallax = () => {
+    const viewportHeight = window.innerHeight || 1;
+
+    sections.forEach((section, index) => {
+      const rect = section.getBoundingClientRect();
+      const centerOffset =
+        rect.top + rect.height * 0.5 - viewportHeight * 0.5;
+      const normalized = Math.max(-1, Math.min(1, centerOffset / viewportHeight));
+      const shiftY = normalized * -MAX_SHIFT_Y;
+      const shiftX =
+        (index % 2 === 0 ? 1 : -1) * normalized * MAX_SHIFT_X;
+
+      section.style.setProperty("--depth-shift-x", `${shiftX.toFixed(2)}px`);
+      section.style.setProperty("--depth-shift-y", `${shiftY.toFixed(2)}px`);
+    });
+  };
+
+  let rafId = 0;
+  const queueUpdate = () => {
+    if (rafId) return;
+    rafId = window.requestAnimationFrame(() => {
+      rafId = 0;
+      updateParallax();
+    });
+  };
+
+  window.addEventListener("scroll", queueUpdate, { passive: true });
+  window.addEventListener("resize", queueUpdate);
+  updateParallax();
+})();

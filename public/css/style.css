@@ -8,6 +8,9 @@
     --brand-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
     --brand-shadow-hover: 0 16px 40px rgba(15, 23, 42, 0.16);
     --brand-radius: 1.1rem;
+    --depth-glow-a: rgba(37, 99, 235, 0.12);
+    --depth-glow-b: rgba(245, 158, 11, 0.1);
+    --depth-glow-c: rgba(16, 185, 129, 0.08);
     --page-gradient:
         radial-gradient(1200px 650px at -5% -10%, rgba(59, 130, 246, 0.22) 0%, rgba(59, 130, 246, 0) 60%),
         radial-gradient(900px 520px at 105% -5%, rgba(245, 158, 11, 0.2) 0%, rgba(245, 158, 11, 0) 56%),
@@ -22,12 +25,89 @@ body {
     transition: background-color .2s ease, color .2s ease, background-image .25s ease;
 }
 
+main.container.py-5 {
+    position: relative;
+    z-index: 0;
+    border-radius: calc(var(--brand-radius) + 0.4rem);
+    background: linear-gradient(140deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.08) 100%);
+    border: 1px solid rgba(148, 163, 184, 0.26);
+    box-shadow: 0 22px 55px rgba(15, 23, 42, 0.08);
+}
+
+main.container.py-5::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: -1;
+    background:
+        radial-gradient(500px 180px at 86% -12%, var(--depth-glow-a) 0%, rgba(37, 99, 235, 0) 72%),
+        radial-gradient(420px 170px at -8% 112%, var(--depth-glow-b) 0%, rgba(245, 158, 11, 0) 72%);
+}
+
 #tech-stack,
 #work-experiences,
 #my-projects,
 #contact-me {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     content-visibility: auto;
     contain-intrinsic-size: 1px 900px;
+}
+
+#tech-stack>.container,
+#work-experiences>.container,
+#my-projects>.container,
+#contact-me>.container {
+    position: relative;
+    z-index: 1;
+}
+
+#tech-stack::before,
+#work-experiences::before,
+#my-projects::before,
+#contact-me::before,
+#tech-stack::after,
+#work-experiences::after,
+#my-projects::after,
+#contact-me::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    border-radius: 999px;
+    filter: blur(1px);
+    will-change: transform;
+}
+
+#tech-stack::before,
+#work-experiences::before,
+#my-projects::before,
+#contact-me::before {
+    width: clamp(260px, 34vw, 520px);
+    height: clamp(260px, 34vw, 520px);
+    top: -18%;
+    right: -10%;
+    background: radial-gradient(circle, var(--depth-glow-a) 0%, rgba(37, 99, 235, 0) 70%);
+    transform: translate3d(var(--depth-shift-x, 0px), var(--depth-shift-y, 0px), 0);
+}
+
+#tech-stack::after,
+#work-experiences::after,
+#my-projects::after,
+#contact-me::after {
+    width: clamp(220px, 30vw, 460px);
+    height: clamp(220px, 30vw, 460px);
+    bottom: -20%;
+    left: -10%;
+    background: radial-gradient(circle, var(--depth-glow-b) 0%, rgba(245, 158, 11, 0) 72%);
+    transform: translate3d(calc(var(--depth-shift-x, 0px) * -0.65), calc(var(--depth-shift-y, 0px) * -0.65), 0);
+}
+
+#my-projects::before {
+    background: radial-gradient(circle, var(--depth-glow-c) 0%, rgba(16, 185, 129, 0) 70%);
 }
 
 .section-title {
@@ -238,10 +318,19 @@ body {
 }
 
 [data-bs-theme="dark"] {
+    --depth-glow-a: rgba(96, 165, 250, 0.2);
+    --depth-glow-b: rgba(251, 191, 36, 0.16);
+    --depth-glow-c: rgba(52, 211, 153, 0.14);
     --page-gradient:
         radial-gradient(1200px 650px at -5% -10%, rgba(37, 99, 235, 0.28) 0%, rgba(37, 99, 235, 0) 60%),
         radial-gradient(900px 520px at 105% -5%, rgba(217, 119, 6, 0.24) 0%, rgba(217, 119, 6, 0) 56%),
         linear-gradient(180deg, #020617 0%, #0b1220 50%, #111827 100%);
+}
+
+[data-bs-theme="dark"] main.container.py-5 {
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.5) 0%, rgba(15, 23, 42, 0.15) 100%);
+    border-color: rgba(148, 163, 184, 0.2);
+    box-shadow: 0 24px 60px rgba(2, 6, 23, 0.42);
 }
 
 [data-bs-theme="dark"] .navbar-nav .nav-link {
@@ -323,6 +412,7 @@ body {
     main.container.py-5 {
         padding-top: 2rem !important;
         padding-bottom: 2rem !important;
+        border-radius: 0.95rem;
     }
 
     .hero-profile-image {
@@ -336,6 +426,17 @@ body {
     .tech-carousel-track::before,
     .tech-carousel-track::after {
         width: 36px;
+    }
+
+    #tech-stack::before,
+    #work-experiences::before,
+    #my-projects::before,
+    #contact-me::before,
+    #tech-stack::after,
+    #work-experiences::after,
+    #my-projects::after,
+    #contact-me::after {
+        opacity: 0.7;
     }
 
     .experience-card,
