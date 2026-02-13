@@ -17,7 +17,7 @@ if (contactForm && alertBox) {
       showAlert({
         alertBox,
         type: "danger",
-        message: "Semua field wajib diisi.",
+        message: "all fields are required to be filled in.",
       });
       return;
     }
@@ -26,7 +26,7 @@ if (contactForm && alertBox) {
       showAlert({
         alertBox,
         type: "danger",
-        message: "Format email tidak valid.",
+        message: "invalid email format.",
       });
       return;
     }
@@ -34,7 +34,7 @@ if (contactForm && alertBox) {
     showAlert({
       alertBox,
       type: "success",
-      message: `Pesan berhasil dikirim. Terima kasih, ${name}!`,
+      message: `Message sent successfully. Thank you, ${name}!`,
     });
 
     contactForm.reset();

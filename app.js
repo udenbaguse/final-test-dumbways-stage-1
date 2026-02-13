@@ -20,8 +20,8 @@ app.get("/", (req, res) => {
       name: "Syam",
       title: "Front End Web Developer",
       bio: "I'm a Front End Web Developer committed to delivering high-quality digital solutions. With a strong passion for creating user-friendly and visually appealing websites, I focus on building interfaces that drive user engagement and satisfaction. I enjoy solving problems through code and constantly refining my skills to keep up with the latest industry trends.",
-      location: "Java Island(not script)",
-      status: "Jomblo Fisabilillah",
+      location: "Java Island (not JavaScript)",
+      status: "Open to opportunities",
     },
   });
 });

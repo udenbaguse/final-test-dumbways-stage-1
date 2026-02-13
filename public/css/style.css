@@ -1,9 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap');
 
-
+:root {
+    --brand-ink: #0f172a;
+    --brand-soft: #334155;
+    --brand-accent: #2563eb;
+    --brand-glass: rgba(255, 255, 255, 0.78);
+    --brand-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    --brand-shadow-hover: 0 16px 40px rgba(15, 23, 42, 0.16);
+    --brand-radius: 1.1rem;
+    --page-gradient:
+        radial-gradient(1200px 650px at -5% -10%, rgba(59, 130, 246, 0.22) 0%, rgba(59, 130, 246, 0) 60%),
+        radial-gradient(900px 520px at 105% -5%, rgba(245, 158, 11, 0.2) 0%, rgba(245, 158, 11, 0) 56%),
+        linear-gradient(180deg, #f8fafc 0%, #eef2ff 48%, #f8fafc 100%);
+}
 
 body {
-    transition: background-color .2s ease, color .2s ease;
+    background-image: var(--page-gradient);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: background-color .2s ease, color .2s ease, background-image .25s ease;
+}
+
+.section-title {
+    font-family: "Libre Baskerville", serif;
+    letter-spacing: 0.4px;
+    line-height: 1.2;
+}
+
+.navbar-smart {
+    background: var(--brand-glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.3);
 }
 
 .theme-toggle-btn {
@@ -16,6 +45,8 @@ body {
 
 .navbar-nav .nav-link {
     position: relative;
+    font-weight: 600;
+    color: var(--brand-ink);
 }
 
 .navbar-nav .nav-link::after {
@@ -33,6 +64,36 @@ body {
 
 .navbar-nav .nav-link:hover::after {
     transform: scaleX(1);
+}
+
+.navbar-nav .nav-link.active::after {
+    transform: scaleX(1);
+}
+
+.navbar-nav .nav-link.active {
+    color: var(--brand-accent);
+}
+
+.btn-talk {
+    background: linear-gradient(135deg, #16a34a, #15803d);
+    border-color: transparent;
+    color: #fff;
+}
+
+.btn-talk:hover {
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.btn-cv {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    border-color: transparent;
+    color: #111827;
+}
+
+.btn-cv:hover {
+    color: #111827;
+    transform: translateY(-1px);
 }
 
 .hero-profile-image {
@@ -60,6 +121,14 @@ body {
     font-style: italic;
 }
 
+.hero-title {
+    color: #1e3a8a;
+}
+
+.hero-meta {
+    color: #475569;
+}
+
 .tech-stack-section {
     scroll-margin-top: 90px;
     background: linear-gradient(180deg, rgba(15, 23, 42, 0.03) 0%, rgba(15, 23, 42, 0) 100%);
@@ -67,6 +136,29 @@ body {
 
 .tech-carousel-track {
     width: min(100%, 1100px);
+    position: relative;
+    isolation: isolate;
+}
+
+.tech-carousel-track::before,
+.tech-carousel-track::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 70px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.tech-carousel-track::before {
+    left: 0;
+    background: linear-gradient(90deg, rgba(15, 23, 42, 0.28) 0%, rgba(15, 23, 42, 0) 100%);
+}
+
+.tech-carousel-track::after {
+    right: 0;
+    background: linear-gradient(270deg, rgba(15, 23, 42, 0.28) 0%, rgba(15, 23, 42, 0) 100%);
 }
 
 .tech-carousel-group {
@@ -78,7 +170,100 @@ body {
 }
 
 .tech-icon-card {
-    width: 5rem;
+    width: 7.2rem;
+    border-radius: 0.95rem;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.24);
+}
+
+.tech-icon-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: rgba(241, 245, 249, 0.92);
+}
+
+.portfolio-card,
+.experience-card,
+.contact-form-card {
+    border-radius: var(--brand-radius);
+    box-shadow: var(--brand-shadow);
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.portfolio-card:hover,
+.experience-card:hover,
+.contact-form-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(37, 99, 235, 0.35) !important;
+    box-shadow: var(--brand-shadow-hover);
+}
+
+.contact-form-card {
+    background: linear-gradient(180deg, rgba(248, 250, 252, 0.45) 0%, rgba(248, 250, 252, 0) 100%);
+}
+
+.contact-form-card .form-control {
+    border-radius: 0.8rem;
+    border-color: rgba(148, 163, 184, 0.4);
+}
+
+.contact-form-card .form-control:focus {
+    border-color: rgba(37, 99, 235, 0.65);
+    box-shadow: 0 0 0 0.22rem rgba(37, 99, 235, 0.2);
+}
+
+.btn-contact-submit {
+    background: linear-gradient(135deg, #334155, #1e293b);
+    color: #f8fafc;
+    border: 0;
+}
+
+.btn-contact-submit:hover {
+    color: #f8fafc;
+    transform: translateY(-1px);
+}
+
+[data-bs-theme="dark"] .navbar-smart {
+    background: rgba(15, 23, 42, 0.78);
+    border-bottom-color: rgba(148, 163, 184, 0.2);
+}
+
+[data-bs-theme="dark"] {
+    --page-gradient:
+        radial-gradient(1200px 650px at -5% -10%, rgba(37, 99, 235, 0.28) 0%, rgba(37, 99, 235, 0) 60%),
+        radial-gradient(900px 520px at 105% -5%, rgba(217, 119, 6, 0.24) 0%, rgba(217, 119, 6, 0) 56%),
+        linear-gradient(180deg, #020617 0%, #0b1220 50%, #111827 100%);
+}
+
+[data-bs-theme="dark"] .navbar-nav .nav-link {
+    color: #e2e8f0;
+}
+
+[data-bs-theme="dark"] .navbar-nav .nav-link.active {
+    color: #93c5fd;
+}
+
+[data-bs-theme="dark"] .hero-title {
+    color: #93c5fd;
+}
+
+[data-bs-theme="dark"] .hero-meta {
+    color: #94a3b8;
+}
+
+[data-bs-theme="dark"] .contact-form-card {
+    background: linear-gradient(180deg, rgba(51, 65, 85, 0.38) 0%, rgba(30, 41, 59, 0) 100%);
+}
+
+[data-bs-theme="dark"] .tech-icon-label {
+    color: rgba(226, 232, 240, 0.95);
+}
+
+@media (max-width: 575.98px) {
+    .tech-icon-card {
+        width: 6.4rem;
+    }
 }
 
 @keyframes tech-slide {
