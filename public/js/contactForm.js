@@ -17,7 +17,7 @@ if (contactForm && alertBox) {
       showAlert({
         alertBox,
         type: "danger",
-        message: "all fields are required to be filled in.",
+        message: "all fields are required to be filled in",
       });
       return;
     }
@@ -26,7 +26,7 @@ if (contactForm && alertBox) {
       showAlert({
         alertBox,
         type: "danger",
-        message: "invalid email format.",
+        message: "invalid email format",
       });
       return;
     }
