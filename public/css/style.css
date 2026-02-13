@@ -16,10 +16,18 @@
 
 body {
     background-image: var(--page-gradient);
-    background-attachment: fixed;
+    background-attachment: scroll;
     background-repeat: no-repeat;
     background-size: cover;
     transition: background-color .2s ease, color .2s ease, background-image .25s ease;
+}
+
+#tech-stack,
+#work-experiences,
+#my-projects,
+#contact-me {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 900px;
 }
 
 .section-title {
@@ -305,6 +313,12 @@ body {
     }
 }
 
+@media (min-width: 992px) {
+    body {
+        background-attachment: fixed;
+    }
+}
+
 @media (max-width: 767.98px) {
     main.container.py-5 {
         padding-top: 2rem !important;
@@ -362,6 +376,28 @@ body {
 
     .tech-icon-card {
         width: 6.4rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .tech-carousel-group {
+        animation: none;
+    }
+
+    .hero-profile-image:hover,
+    .portfolio-card:hover,
+    .experience-card:hover,
+    .contact-form-card:hover,
+    .btn-talk:hover,
+    .btn-cv:hover,
+    .btn-contact-submit:hover {
+        transform: none;
     }
 }
 

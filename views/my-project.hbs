@@ -10,6 +10,8 @@
               src="/projects/personal-web.png"
               alt="Personal Web project preview"
               class="w-100 h-100 object-fit-cover"
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <h3 class="h5 fw-bold mb-2">Personal Web</h3>
@@ -39,6 +41,8 @@
               src="/projects/portofolio.png"
               alt="Portofolio project preview"
               class="w-100 h-100 object-fit-cover"
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <h3 class="h5 fw-bold mb-2">Portofolio</h3>
@@ -66,6 +70,8 @@
               src="/projects/viyanti-parfumes.png"
               alt="Viyanti Parfumes project preview"
               class="w-100 h-100 object-fit-cover"
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <h3 class="h5 fw-bold mb-2">Viyanti Parfumes</h3>
@@ -91,8 +97,8 @@
       <div class="col-12 col-lg-6">
         <article class="h-100 p-3 rounded-4 border border-secondary-subtle bg-body portfolio-card">
           <div class="ratio ratio-16x9 rounded-3 overflow-hidden mb-3 bg-light">
-            <video class="w-100 h-100 object-fit-cover" muted loop autoplay playsinline>
-              <source src="/projects/clean-orphan-uploads-cli.mp4" type="video/mp4" />
+            <video class="w-100 h-100 object-fit-cover" muted loop autoplay playsinline preload="none">
+              <source data-src="/projects/clean-orphan-uploads-cli.mp4" type="video/mp4" />
               Your browser does not support video preview.
             </video>
           </div>
