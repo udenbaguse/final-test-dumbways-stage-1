@@ -3,6 +3,7 @@ import hbs from "hbs";
 import path from "path";
 
 const app = express();
+const port = 3000;
 const __dirname = import.meta.dirname
 
 app.set("view engine", "hbs");
@@ -24,7 +25,7 @@ app.get("/", (req, res) => {
   });
 });
 
-const port = process.env.PORT || 3000;
+
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
