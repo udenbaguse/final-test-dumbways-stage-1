@@ -260,7 +260,106 @@ body {
     color: rgba(226, 232, 240, 0.95);
 }
 
+@media (max-width: 991.98px) {
+    .navbar-smart .container {
+        row-gap: 0.75rem;
+    }
+
+    .navbar-smart .navbar-collapse {
+        margin-top: 0.6rem;
+        padding: 0.9rem;
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        border-radius: 1rem;
+        background: rgba(248, 250, 252, 0.92);
+    }
+
+    [data-bs-theme="dark"] .navbar-smart .navbar-collapse {
+        background: rgba(15, 23, 42, 0.92);
+        border-color: rgba(148, 163, 184, 0.25);
+    }
+
+    .navbar-smart .navbar-nav {
+        gap: 0.3rem;
+        margin-bottom: 0.65rem !important;
+    }
+
+    .navbar-smart .nav-link {
+        padding-left: 0.4rem;
+        padding-right: 0.4rem;
+    }
+
+    .navbar-smart .nav-link::after {
+        left: 0.4rem;
+        right: 0.4rem;
+    }
+
+    .navbar-actions {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .navbar-actions .btn-talk,
+    .navbar-actions .btn-cv {
+        flex: 1 1 180px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 767.98px) {
+    main.container.py-5 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+    }
+
+    .hero-profile-image {
+        width: min(72vw, 260px);
+    }
+
+    .hero-title {
+        font-size: 1.35rem;
+    }
+
+    .tech-carousel-track::before,
+    .tech-carousel-track::after {
+        width: 36px;
+    }
+
+    .experience-card,
+    .portfolio-card,
+    .contact-form-card {
+        border-radius: 0.9rem;
+    }
+
+    .experience-card {
+        padding: 1rem !important;
+    }
+}
+
 @media (max-width: 575.98px) {
+    .section-title {
+        font-size: 1.42rem;
+    }
+
+    .hero-meta {
+        font-size: 0.95rem;
+    }
+
+    #my-projects .portfolio-card,
+    #contact-me form.contact-form-card {
+        padding: 0.95rem !important;
+    }
+
+    #my-projects .small,
+    #work-experiences .text-secondary {
+        font-size: 0.9rem !important;
+    }
+
+    .navbar-actions .btn-talk,
+    .navbar-actions .btn-cv,
+    .navbar-actions .theme-toggle-btn {
+        width: 100%;
+    }
+
     .tech-icon-card {
         width: 6.4rem;
     }
