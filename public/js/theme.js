@@ -1,16 +1,19 @@
 (function () {
   const root = document.documentElement;
   const themeToggleButton = document.getElementById("themeToggle");
+  const pageShell = document.querySelector(".page-shell");
   const savedTheme = localStorage.getItem("bs-theme");
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+  const REVEAL_DURATION_MS = 1000;
   const defaultTheme = prefersDark ? "dark" : "light";
   const activeTheme = savedTheme || defaultTheme;
 
-  root.setAttribute("data-bs-theme", activeTheme);
-
-  if (!themeToggleButton) return;
-
   const updateButtonIcon = (theme) => {
+    if (!themeToggleButton) return;
+
     themeToggleButton.innerHTML =
       theme === "dark"
         ? '<i class="bi bi-sun-fill" aria-hidden="true"></i>'
@@ -25,14 +28,76 @@
     );
   };
 
-  updateButtonIcon(activeTheme);
+  const applyTheme = (theme) => {
+    root.setAttribute("data-bs-theme", theme);
+    localStorage.setItem("bs-theme", theme);
+    updateButtonIcon(theme);
+  };
+
+  let isThemeAnimating = false;
+
+  const runBackgroundReveal = (currentTheme, nextTheme) => {
+    if (!themeToggleButton || !pageShell || isThemeAnimating) return;
+    isThemeAnimating = true;
+
+    const buttonRect = themeToggleButton.getBoundingClientRect();
+    const originX = buttonRect.left + buttonRect.width / 2;
+    const originY = buttonRect.top + buttonRect.height / 2;
+
+    applyTheme(nextTheme);
+
+    const revealNode = document.createElement("div");
+    revealNode.className = `theme-backdrop-circle to-${currentTheme} active`;
+    revealNode.style.left = `${originX}px`;
+    revealNode.style.top = `${originY}px`;
+
+    document.body.insertBefore(revealNode, pageShell);
+
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        revealNode.classList.remove("active");
+      });
+    });
+
+    let done = false;
+    const finish = () => {
+      if (done) return;
+      done = true;
+      revealNode.remove();
+      isThemeAnimating = false;
+    };
+
+    revealNode.addEventListener(
+      "transitionend",
+      (event) => {
+        if (event.propertyName === "transform") finish();
+      },
+      { once: true }
+    );
+
+    window.setTimeout(finish, REVEAL_DURATION_MS + 150);
+  };
+
+  applyTheme(activeTheme);
+
+  if (!themeToggleButton) return;
 
   themeToggleButton.addEventListener("click", () => {
+    if (isThemeAnimating) return;
     const currentTheme = root.getAttribute("data-bs-theme") || "light";
     const nextTheme = currentTheme === "dark" ? "light" : "dark";
-    root.setAttribute("data-bs-theme", nextTheme);
-    localStorage.setItem("bs-theme", nextTheme);
-    updateButtonIcon(nextTheme);
+
+    if (prefersReducedMotion) {
+      applyTheme(nextTheme);
+      return;
+    }
+
+    if (!pageShell) {
+      applyTheme(nextTheme);
+      return;
+    }
+
+    runBackgroundReveal(currentTheme, nextTheme);
   });
 })();
 
