@@ -7,6 +7,7 @@
     --hero-ring-start: #2563eb;
     --hero-ring-mid: #a855f7;
     --hero-ring-end: #06b6d4;
+    --hero-name-color: #1e3a8a;
     --hero-image-max-size: 260px;
     --brand-glass: rgba(255, 255, 255, 0.78);
     --brand-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
@@ -15,6 +16,16 @@
     --depth-glow-a: rgba(37, 99, 235, 0.12);
     --depth-glow-b: rgba(245, 158, 11, 0.1);
     --depth-glow-c: rgba(16, 185, 129, 0.08);
+    --hero-title-gradient-colors:
+        #0f766e,
+        #1d4ed8,
+        #b45309,
+        #7c3aed,
+        #be123c,
+        #0369a1,
+        #b45309,
+        #1d4ed8,
+        #0f766e;
     --page-gradient:
         radial-gradient(1200px 650px at -5% -10%, rgba(59, 130, 246, 0.22) 0%, rgba(59, 130, 246, 0) 60%),
         radial-gradient(900px 520px at 105% -5%, rgba(245, 158, 11, 0.2) 0%, rgba(245, 158, 11, 0) 56%),
@@ -275,7 +286,23 @@ main.container.py-5::before {
 }
 
 .hero-name {
-    color: #1e3a8a;
+    color: var(--hero-name-color);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.hero-title-gradient {
+    background-image: linear-gradient(to right, var(--hero-title-gradient-colors));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 200%;
+    animation: hero-title-gradient-shift 2s steps(5) infinite;
+}
+
+@keyframes hero-title-gradient-shift {
+    to {
+        background-position: 200%;
+    }
 }
 
 .hero-meta {
@@ -389,6 +416,17 @@ main.container.py-5::before {
     --hero-ring-start: #60a5fa;
     --hero-ring-mid: #c084fc;
     --hero-ring-end: #22d3ee;
+    --hero-name-color: #bfdbfe;
+    --hero-title-gradient-colors:
+        #22c55e,
+        #38bdf8,
+        #fde047,
+        #a78bfa,
+        #fda4af,
+        #facc15,
+        #60a5fa,
+        #34d399,
+        #22c55e;
     --page-gradient:
         radial-gradient(1200px 650px at -5% -10%, rgba(37, 99, 235, 0.28) 0%, rgba(37, 99, 235, 0) 60%),
         radial-gradient(900px 520px at 105% -5%, rgba(217, 119, 6, 0.24) 0%, rgba(217, 119, 6, 0) 56%),
