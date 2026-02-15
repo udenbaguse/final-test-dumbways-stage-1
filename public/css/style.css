@@ -191,6 +191,20 @@ main.container.py-5::before {
     mask-position: 0% 0%;
 }
 
+#my-projects .portfolio-card h3>button[data-bs-toggle="collapse"] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    color: var(--brand-ink);
+}
+
+#my-projects .portfolio-card h3>button[data-bs-toggle="collapse"]:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--brand-accent) 55%, white);
+    outline-offset: 4px;
+    border-radius: 0.35rem;
+}
+
 @media (hover: none) {
     #my-projects .project-media-mask img {
         -webkit-mask-position: 0% 0%;

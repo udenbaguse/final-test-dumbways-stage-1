@@ -2,7 +2,7 @@
   <div class="container">
     <h2 class="section-title fw-bold mb-4">My Projects</h2>
 
-    <div class="row g-4">
+    <div id="project-desc-accordion" class="row g-4">
       <div class="col-12 col-lg-6">
         <article class="h-100 p-3 rounded-4 border border-secondary-subtle bg-body portfolio-card">
           <div class="ratio ratio-16x9 rounded-3 overflow-hidden mb-3 bg-light project-media-mask">
@@ -14,11 +14,24 @@
               decoding="async"
             />
           </div>
-          <h3 class="h5 fw-bold mb-2">Personal Web</h3>
-          <p class="text-secondary small mb-3">
-            The first week of the DumbWays Bootcamp assignment focused on developing a Bootstrap-based personal web page 
-            that could store user input data in Local Storage and then render it back into project cards with comprehensive CRUD features.
-          </p>
+          <h3 class="h5 fw-bold mb-2">
+            <button
+              class="btn btn-link p-0 text-decoration-none text-start fw-bold w-100"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#project-desc-1"
+              aria-expanded="true"
+              aria-controls="project-desc-1"
+            >
+              <span>Personal Web</span>
+            </button>
+          </h3>
+          <div id="project-desc-1" class="collapse show" data-bs-parent="#project-desc-accordion">
+            <p class="text-secondary small mb-3">
+              The first week of the DumbWays Bootcamp assignment focused on developing a Bootstrap-based personal web page 
+              that could store user input data in Local Storage and then render it back into project cards with comprehensive CRUD features.
+            </p>
+          </div>
 
           <div class="d-flex flex-wrap gap-2 mb-3">
             <span class="badge text-bg-light border">HTML</span>
@@ -45,11 +58,24 @@
               decoding="async"
             />
           </div>
-          <h3 class="h5 fw-bold mb-2">Portofolio</h3>
-          <p class="text-secondary small mb-3">
-            This portfolio was created as part of the initial assignment in the Udemy Fullstack Web Developer course.
-            This assignment aims to apply the fundamental web development concepts learned in a real-world project.
-          </p>
+          <h3 class="h5 fw-bold mb-2">
+            <button
+              class="btn btn-link p-0 text-decoration-none text-start fw-bold w-100"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#project-desc-2"
+              aria-expanded="false"
+              aria-controls="project-desc-2"
+            >
+              <span>Portofolio</span>
+            </button>
+          </h3>
+          <div id="project-desc-2" class="collapse" data-bs-parent="#project-desc-accordion">
+            <p class="text-secondary small mb-3">
+              This portfolio was created as part of the initial assignment in the Udemy Fullstack Web Developer course.
+              This assignment aims to apply the fundamental web development concepts learned in a real-world project.
+            </p>
+          </div>
 
           <div class="d-flex flex-wrap gap-2 mb-3">
             <span class="badge text-bg-light border">HTML</span>
@@ -74,11 +100,24 @@
               decoding="async"
             />
           </div>
-          <h3 class="h5 fw-bold mb-2">Viyanti Parfumes</h3>
-          <p class="text-secondary small mb-3">
-            The DevHandal 2026 program, a collaboration between Codepolitan and Tencent Cloud EdgeOne, 
-            utilizes the Vite and React ecosystem for the frontend, and Contentful as a simple backend for efficient content management.
-          </p>
+          <h3 class="h5 fw-bold mb-2">
+            <button
+              class="btn btn-link p-0 text-decoration-none text-start fw-bold w-100"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#project-desc-3"
+              aria-expanded="false"
+              aria-controls="project-desc-3"
+            >
+              <span>Viyanti Parfumes</span>
+            </button>
+          </h3>
+          <div id="project-desc-3" class="collapse" data-bs-parent="#project-desc-accordion">
+            <p class="text-secondary small mb-3">
+              The DevHandal 2026 program, a collaboration between Codepolitan and Tencent Cloud EdgeOne, 
+              utilizes the Vite and React ecosystem for the frontend, and Contentful as a simple backend for efficient content management.
+            </p>
+          </div>
 
           <div class="d-flex flex-wrap gap-2 mb-3">
             <span class="badge text-bg-light border">React</span>
@@ -102,11 +141,24 @@
               Your browser does not support video preview.
             </video>
           </div>
-          <h3 class="h5 fw-bold mb-2">Clean Orphan Uploads CLI</h3>
-          <p class="text-secondary small mb-3">
-            This project is a functional Command Line Interface (CLI) designed specifically to optimize storage 
-            by detecting and deleting uploaded files that no longer have references in the PostgreSQL database.
-          </p>
+          <h3 class="h5 fw-bold mb-2">
+            <button
+              class="btn btn-link p-0 text-decoration-none text-start fw-bold w-100"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#project-desc-4"
+              aria-expanded="false"
+              aria-controls="project-desc-4"
+            >
+              <span>Clean Orphan Uploads CLI</span>
+            </button>
+          </h3>
+          <div id="project-desc-4" class="collapse" data-bs-parent="#project-desc-accordion">
+            <p class="text-secondary small mb-3">
+              This project is a functional Command Line Interface (CLI) designed specifically to optimize storage 
+              by detecting and deleting uploaded files that no longer have references in the PostgreSQL database.
+            </p>
+          </div>
 
           <div class="d-flex flex-wrap gap-2 mb-3">
             <span class="badge text-bg-light border">Node.js</span>
