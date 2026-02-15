@@ -26,6 +26,9 @@
         #b45309,
         #1d4ed8,
         #0f766e;
+    --project-title-gradient: linear-gradient(100deg, #0f766e 0%, #1d4ed8 42%, #7c3aed 100%);
+    --project-title-fallback: #1e3a8a;
+    --project-title-icon: #1e40af;
     --page-gradient:
         radial-gradient(1200px 650px at -5% -10%, rgba(59, 130, 246, 0.22) 0%, rgba(59, 130, 246, 0) 60%),
         radial-gradient(900px 520px at 105% -5%, rgba(245, 158, 11, 0.2) 0%, rgba(245, 158, 11, 0) 56%),
@@ -196,13 +199,80 @@ main.container.py-5::before {
     align-items: center;
     justify-content: space-between;
     gap: 0.75rem;
-    color: var(--brand-ink);
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    text-align: left;
+    font-size: clamp(1.15rem, 1.05rem + 0.35vw, 1.35rem);
+    line-height: 1.25;
+    color: var(--project-title-icon);
+    text-decoration: none;
+    position: relative;
+    padding-right: 2.4rem;
+}
+
+#my-projects .portfolio-card h3>button[data-bs-toggle="collapse"]>span {
+    background-image: var(--project-title-gradient);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    transition: filter 220ms ease, transform 220ms ease;
+}
+
+#my-projects .portfolio-card h3>button[data-bs-toggle="collapse"]:hover>span {
+    filter: brightness(1.08) saturate(1.08);
+}
+
+#my-projects .portfolio-card h3>button[data-bs-toggle="collapse"]::before {
+    content: "";
+    position: absolute;
+    right: 0.62rem;
+    top: 50%;
+    width: 0.52rem;
+    height: 0.52rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: translateY(-62%) rotate(45deg);
+    transition: transform 220ms ease;
+    z-index: 1;
+}
+
+#my-projects .portfolio-card h3>button[data-bs-toggle="collapse"]::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 1.55rem;
+    height: 1.55rem;
+    border-radius: 999px;
+    transform: translateY(-50%);
+    background: linear-gradient(145deg, rgba(37, 99, 235, 0.12), rgba(37, 99, 235, 0.03));
+    border: 1px solid rgba(37, 99, 235, 0.28);
+}
+
+#my-projects .portfolio-card h3>button[data-bs-toggle="collapse"][aria-expanded="true"]::before {
+    transform: translateY(-40%) rotate(-135deg);
+}
+
+#my-projects .portfolio-card h3>button[data-bs-toggle="collapse"][aria-expanded="true"]::after {
+    background: linear-gradient(145deg, rgba(37, 99, 235, 0.2), rgba(37, 99, 235, 0.06));
+    border-color: rgba(37, 99, 235, 0.42);
 }
 
 #my-projects .portfolio-card h3>button[data-bs-toggle="collapse"]:focus-visible {
     outline: 2px solid color-mix(in srgb, var(--brand-accent) 55%, white);
     outline-offset: 4px;
     border-radius: 0.35rem;
+}
+
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+    #my-projects .portfolio-card h3>button[data-bs-toggle="collapse"]>span {
+        color: var(--project-title-fallback);
+    }
 }
 
 @media (hover: none) {
@@ -478,6 +548,9 @@ main.container.py-5::before {
         #60a5fa,
         #34d399,
         #22c55e;
+    --project-title-gradient: linear-gradient(100deg, #67e8f9 0%, #93c5fd 45%, #c4b5fd 100%);
+    --project-title-fallback: #bfdbfe;
+    --project-title-icon: #bfdbfe;
     --page-gradient:
         radial-gradient(1200px 650px at -5% -10%, rgba(37, 99, 235, 0.28) 0%, rgba(37, 99, 235, 0) 60%),
         radial-gradient(900px 520px at 105% -5%, rgba(217, 119, 6, 0.24) 0%, rgba(217, 119, 6, 0) 56%),
