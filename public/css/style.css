@@ -29,6 +29,12 @@
     --project-title-gradient: linear-gradient(100deg, #0f766e 0%, #1d4ed8 42%, #7c3aed 100%);
     --project-title-fallback: #1e3a8a;
     --project-title-icon: #1e40af;
+    --project-link-repo: #475569;
+    --project-link-repo-hover: #0f172a;
+    --project-link-live: #1d4ed8;
+    --project-link-live-hover: #1e3a8a;
+    --project-link-icon-bg: rgba(37, 99, 235, 0.12);
+    --project-link-icon-border: rgba(37, 99, 235, 0.28);
     --page-gradient:
         radial-gradient(1200px 650px at -5% -10%, rgba(59, 130, 246, 0.22) 0%, rgba(59, 130, 246, 0) 60%),
         radial-gradient(900px 520px at 105% -5%, rgba(245, 158, 11, 0.2) 0%, rgba(245, 158, 11, 0) 56%),
@@ -267,6 +273,55 @@ main.container.py-5::before {
     outline: 2px solid color-mix(in srgb, var(--brand-accent) 55%, white);
     outline-offset: 4px;
     border-radius: 0.35rem;
+}
+
+#my-projects .portfolio-card .d-flex.small a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--project-link-repo);
+    font-weight: 600;
+    transition: color 180ms ease, transform 180ms ease;
+}
+
+#my-projects .portfolio-card .d-flex.small a .bi {
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--project-link-icon-bg);
+    border: 1px solid var(--project-link-icon-border);
+    font-size: 0.78rem;
+}
+
+#my-projects .portfolio-card .d-flex.small a .bi-github {
+    color: var(--project-link-repo);
+}
+
+#my-projects .portfolio-card .d-flex.small a .bi-box-arrow-up-right {
+    color: var(--project-link-live);
+}
+
+#my-projects .portfolio-card .d-flex.small a[href*="github.com"] {
+    color: var(--project-link-repo);
+}
+
+#my-projects .portfolio-card .d-flex.small a[href*="github.com"]:hover {
+    color: var(--project-link-repo-hover);
+}
+
+#my-projects .portfolio-card .d-flex.small a:not([href*="github.com"]) {
+    color: var(--project-link-live);
+}
+
+#my-projects .portfolio-card .d-flex.small a:not([href*="github.com"]):hover {
+    color: var(--project-link-live-hover);
+}
+
+#my-projects .portfolio-card .d-flex.small a:hover {
+    transform: translateY(-1px);
 }
 
 @supports not ((-webkit-background-clip: text) or (background-clip: text)) {
@@ -551,6 +606,12 @@ main.container.py-5::before {
     --project-title-gradient: linear-gradient(100deg, #67e8f9 0%, #93c5fd 45%, #c4b5fd 100%);
     --project-title-fallback: #bfdbfe;
     --project-title-icon: #bfdbfe;
+    --project-link-repo: #cbd5e1;
+    --project-link-repo-hover: #f1f5f9;
+    --project-link-live: #93c5fd;
+    --project-link-live-hover: #bfdbfe;
+    --project-link-icon-bg: rgba(148, 163, 184, 0.16);
+    --project-link-icon-border: rgba(148, 163, 184, 0.34);
     --page-gradient:
         radial-gradient(1200px 650px at -5% -10%, rgba(37, 99, 235, 0.28) 0%, rgba(37, 99, 235, 0) 60%),
         radial-gradient(900px 520px at 105% -5%, rgba(217, 119, 6, 0.24) 0%, rgba(217, 119, 6, 0) 56%),
