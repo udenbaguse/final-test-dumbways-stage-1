@@ -1,21 +1,23 @@
 <main class="container py-5">
   <section class="row g-4 align-items-center">
     <div class="col-12 col-lg-4 text-center">
-      <img
-        class="img-fluid rounded-circle border border-3 shadow hero-profile-image"
-        src="https://ik.imagekit.io/udenbaguse/photo-profile-removebg-preview.png"
-        alt="Profile photo"
-        width="300"
-        height="300"
-        loading="eager"
-        decoding="async"
-        fetchpriority="high"
-      />
+      <div class="hero-image-ring mx-auto">
+        <img
+          class="img-fluid rounded-circle shadow hero-profile-image"
+          src="https://ik.imagekit.io/udenbaguse/photo-profile-removebg-preview.png"
+          alt="Profile photo"
+          width="300"
+          height="300"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+      </div>
     </div>
 
     <div class="col-12 col-lg-8">
-      <h1 class="display-4 fw-bold mb-3">Hi, I'm <span class="font-name">{{profile.name}}</span></h1>
-      <h2 class="h3 hero-title mb-3">{{profile.title}}</h2>
+      <h1 class="display-4 fw-bold mb-3">Hi, I'm <span class="font-name hero-name">{{profile.name}}</span></h1>
+      <h2 class="h3 mb-3">{{profile.title}}</h2>
       <p class="lead text-secondary fw-medium mb-4">{{profile.bio}}</p>
 
       <ul class="list-unstyled fw-bold hero-meta mb-4">
