@@ -856,3 +856,49 @@ main.container.py-5::before {
     }
 }
 
+
+/* Scroll Reveal Trigger */
+.scroll-reveal {
+    opacity: 0;
+    transform: translate3d(0, 26px, 0) scale(0.985);
+    filter: blur(6px);
+    transition:
+        opacity 760ms cubic-bezier(0.16, 1, 0.3, 1),
+        transform 760ms cubic-bezier(0.16, 1, 0.3, 1),
+        filter 760ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform, filter;
+    backface-visibility: hidden;
+}
+
+.scroll-reveal.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+}
+
+.scroll-reveal--left {
+    transform: translate3d(-22px, 14px, 0) scale(0.985);
+}
+
+.scroll-reveal--right {
+    transform: translate3d(22px, 14px, 0) scale(0.985);
+}
+
+.scroll-reveal--up {
+    transform: translate3d(0, 26px, 0) scale(0.985);
+}
+
+.scroll-reveal--soft {
+    transform: translate3d(0, 14px, 0) scale(0.992);
+    filter: blur(3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scroll-reveal,
+    .scroll-reveal.is-visible {
+        opacity: 1;
+        transform: none;
+        filter: none;
+        transition: none;
+    }
+}

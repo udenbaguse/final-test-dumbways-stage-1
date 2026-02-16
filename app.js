@@ -12,7 +12,7 @@ app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "views"));
 hbs.registerPartials(path.join(__dirname, "views"));
 
-app.disable("x-powered-by");
+// app.disable("x-powered-by");
 app.use(express.static(staticDir, {
   etag: true,
   lastModified: true,

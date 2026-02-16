@@ -258,3 +258,66 @@
   window.addEventListener("resize", queueUpdate);
   updateParallax();
 })();
+
+// Scroll reveal trigger
+(function () {
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  const revealGroups = [
+    { selector: "main.container.py-5", effectClass: "scroll-reveal--up" },
+    { selector: "#tech-stack .section-title", effectClass: "scroll-reveal--soft" },
+    { selector: "#tech-stack .tech-carousel-track", effectClass: "scroll-reveal--soft" },
+    {
+      selector: "#work-experiences .experience-card",
+      effectClass: "scroll-reveal--left",
+    },
+    { selector: "#my-projects .portfolio-card", effectClass: "scroll-reveal--right" },
+    { selector: "#contact-me .col-12.col-lg-8", effectClass: "scroll-reveal--up" },
+    { selector: "footer .container", effectClass: "scroll-reveal--soft" },
+  ];
+
+  const targets = revealGroups.flatMap((group) =>
+    Array.from(document.querySelectorAll(group.selector)).map((element, index) => ({
+      element,
+      effectClass: group.effectClass,
+      index,
+    }))
+  );
+
+  if (!targets.length) return;
+
+  targets.forEach(({ element, effectClass, index }) => {
+    element.classList.add("scroll-reveal");
+    if (effectClass) element.classList.add(effectClass);
+    element.style.transitionDelay = String(Math.min(index * 85, 340)) + "ms";
+  });
+
+  if (prefersReducedMotion) {
+    targets.forEach(({ element }) => element.classList.add("is-visible"));
+    return;
+  }
+
+  if (!("IntersectionObserver" in window)) {
+    targets.forEach(({ element }) => element.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    },
+    {
+      threshold: 0.14,
+      rootMargin: "0px 0px -8% 0px",
+    }
+  );
+
+  targets.forEach(({ element }) => observer.observe(element));
+})();
+
