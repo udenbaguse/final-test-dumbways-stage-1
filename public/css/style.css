@@ -706,6 +706,71 @@ main.container.py-5::before {
     transform: translateY(-1px);
 }
 
+@property --footer-ring-fill {
+    syntax: '<percentage>';
+    inherits: true;
+    initial-value: 0%;
+}
+
+.footer-social-link {
+    --footer-ring-fill: 0%;
+    --footer-ring-color: #64748b;
+    --footer-icon-idle: #64748b;
+    --footer-icon-active: #0f172a;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.8rem;
+    aspect-ratio: 1 / 1;
+    border-radius: 999px;
+    background: rgba(148, 163, 184, 0.12);
+}
+
+.footer-social-link i {
+    color: var(--footer-icon-idle);
+    transition: color 180ms ease;
+}
+
+.footer-social-link::after {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: inherit;
+    background: conic-gradient(
+        from -90deg,
+        var(--footer-ring-color) var(--footer-ring-fill),
+        transparent 0
+    );
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 0);
+    mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 0);
+    transition: --footer-ring-fill 650ms linear;
+    pointer-events: none;
+}
+
+.footer-social-link:hover {
+    --footer-ring-fill: 100%;
+}
+
+.footer-social-link:hover i {
+    color: var(--footer-icon-active);
+    transition-delay: 650ms;
+}
+
+.footer-social-link:not(:hover) i {
+    transition-delay: 0s;
+}
+
+.footer-social-link--github {
+    --footer-ring-color: #2563eb;
+    --footer-icon-active: #2563eb;
+}
+
+.footer-social-link--youtube {
+    --footer-ring-color: #dc2626;
+    --footer-icon-active: #dc2626;
+}
+
 [data-bs-theme="dark"] .navbar-smart {
     background: rgba(15, 23, 42, 0.78);
     border-bottom-color: rgba(148, 163, 184, 0.2);
@@ -780,6 +845,11 @@ main.container.py-5::before {
 
 [data-bs-theme="dark"] .tech-icon-label {
     color: rgba(226, 232, 240, 0.95);
+}
+
+[data-bs-theme="dark"] .footer-social-link {
+    --footer-icon-idle: #cbd5e1;
+    background: rgba(148, 163, 184, 0.2);
 }
 
 @media (max-width: 991.98px) {
@@ -933,6 +1003,10 @@ main.container.py-5::before {
 
     .hero-image-ring::before {
         animation: none;
+    }
+
+    .footer-social-link:hover i {
+        transition-delay: 0s;
     }
 }
 
