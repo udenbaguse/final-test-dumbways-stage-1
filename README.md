@@ -6,7 +6,7 @@ Project ini menampilkan profil, tech stack, pengalaman kerja, daftar project, se
 
 ## Demo
 
-- Repository: https://github.com/udenbaguse/final-test-dumbways-stage-1
+- https://syam-final-test.vercel.app/
 
 ## Fitur Utama
 
