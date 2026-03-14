@@ -6,7 +6,7 @@ Project ini menampilkan profil, tech stack, pengalaman kerja, daftar project, se
 
 ## Demo
 
-- https://syam-final-test.vercel.app/
+ https://syam-final-test.vercel.app/
 
 ## Fitur Utama
 
